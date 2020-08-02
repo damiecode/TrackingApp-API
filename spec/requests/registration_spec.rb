@@ -40,11 +40,13 @@ require "rails_helper"
               post @sign_up_url, params: @signup_params.merge({email: "test@example.com"})
             }.to change(User, :count).by(1)
           end
-        endcontext 'when signup params is invalid' do
+        end
+        context 'when signup params is invalid' do
           before { post @sign_up_url }
           it 'returns unprocessable entity 422' do
             expect(response.status).to eq 422
-          endend
+          end
+        end
       end
     end
   end
