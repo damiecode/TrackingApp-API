@@ -1,14 +1,15 @@
 class ExpensesController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @expenses = Expense.all.order(date: :desc).to_json
+    @expenses = Expense.all.order(date: :desc).to_json(:include => :category)
     @currentTab = "expenses"
   end
 
-  def show
+  def create
     @expense = Expense.new(expense_params)
 
     if @expense.save
-      render json: @expense.to_json
+      render json: @expense.to_json(:include => [:category])
     else
       render json: @expense.errors, status: :unprocessable_entity
     end
@@ -31,11 +32,8 @@ class ExpensesController < ApplicationController
   end
 
   private
-    # Using a private method to encapsulate the permissible parameters is
-    # just a good pattern since you'll be able to reuse the same permit
-    # list between create and update. Also, you can specialize this method
-    # with per-user checking of permissible attributes.
     def expense_params
-      params.require(:expense).permit(:date, :name, :amount)
+      params.require(:expense).permit(:date, :name, :category_id, :amount)
     end
+
 end
