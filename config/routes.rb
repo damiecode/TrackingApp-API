@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     namespace :vi do
       devise_scope :user do
         post "sign_up", to: "registrations#create"
-        post "logged_in", to: "sessions#create"
+        post "sign_in", to: "sessions#create"
+        delete :logout, to: 'sessions#logout'
+        get :logged_in, to: 'sessions#logged_in'
       end
       get 'category/get_categories'
       resources :expenses, only: [:create, :index, :update]
