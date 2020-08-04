@@ -1,12 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  acts_as_token_authenticatable
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  include DeviseTokenAuth::Concerns::User
+  has_secure_password
   validates :username, length: { in: 3..32 }, presence: true
   validates :password, length: { minimum: 8 }
   validates_presence_of :email
