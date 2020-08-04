@@ -1,4 +1,4 @@
-Rails.application.config.middleware.insert_before 0, Rack::Cors do
+Rails.application.routes.draw do
   devise_for :users
   get 'savings/index'
   root 'static#index'
