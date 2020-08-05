@@ -1,5 +1,8 @@
 class ExpensesController < ApplicationController
-  before_action :authenticate_user!
+  include SessionsHelper
+
+  before_action :set_current_user
+
   def index
     @expenses = Expense.all.order(date: :desc).to_json(:include => :category)
     @currentTab = "expenses"
@@ -35,5 +38,4 @@ class ExpensesController < ApplicationController
     def expense_params
       params.require(:expense).permit(:date, :name, :category_id, :amount)
     end
-
 end

@@ -19,7 +19,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'rubocop'
 gem 'devise_token_auth'
-gem 'rack-cors'
+gem 'rack-cors', require: 'rack/cors'
 gem 'devise'
 gem "simple_token_authentication"
 # Use Redis adapter to run Action Cable in production
