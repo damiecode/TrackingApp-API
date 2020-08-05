@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-core.git
-  revision: 56190f3201a47fda81b618984aa7cb19798ff2a1
+  revision: e7c5d030966a7e8dad3e0a67c61920c4f2437c15
   branch: master
   specs:
     rspec-core (3.10.0.pre)
@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-expectations.git
-  revision: df28c7ba03999a032e4927b5028a63cdf444c331
+  revision: e63ff4765e1cd2798b02ddddad259f1104ef87a5
   branch: master
   specs:
     rspec-expectations (3.10.0.pre)
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-mocks.git
-  revision: 023dbbaa71cc223cf338c9d32fa9db2ebe227972
+  revision: 0a52e0a86b126b4bab94d277b2ad99a7492dc37d
   branch: master
   specs:
     rspec-mocks (3.10.0.pre)
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-rails.git
-  revision: 2c781aa148942df60aafe4fe855c50f0662cbccd
+  revision: 01704c50c146f720db914724c25681781ecefb23
   branch: master
   specs:
     rspec-rails (4.1.0.pre)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-support.git
-  revision: bba249a0a5e13c64c12b6ed7a02de39aa568ebaa
+  revision: 6447b0c2c9d1cd3e1504784fb85675ca9ae7b7c3
   branch: master
   specs:
     rspec-support (3.10.0.pre)
@@ -267,6 +267,8 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    shoulda-matchers (4.3.0)
+      activesupport (>= 4.2.0)
     simple_token_authentication (1.17.0)
       actionmailer (>= 3.2.6, < 7)
       actionpack (>= 3.2.6, < 7)
@@ -343,6 +345,7 @@ DEPENDENCIES
   rubocop
   sass-rails (>= 6)
   selenium-webdriver
+  shoulda-matchers
   simple_token_authentication
   spring
   spring-watcher-listen (~> 2.0.0)
