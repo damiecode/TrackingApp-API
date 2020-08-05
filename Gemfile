@@ -22,6 +22,7 @@ gem 'devise_token_auth'
 gem 'rack-cors', require: 'rack/cors'
 gem 'devise'
 gem "simple_token_authentication"
+gem 'font-awesome-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
