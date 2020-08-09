@@ -4,7 +4,8 @@ class ExpensesController < ApplicationController
   before_action :set_current_user
 
   def index
-    @expenses = Expense.all.order(date: :desc).to_json(:include => :category)
+    @expenses = Expense.all.order(date: :desc)
+    json_response(@expenses);
     @currentTab = "expenses"
   end
 
@@ -12,7 +13,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.new(expense_params)
 
     if @expense.save
-      render json: @expense.to_json(:include => [:category])
+      render json: @expense
     else
       render json: @expense.errors, status: :unprocessable_entity
     end
@@ -28,7 +29,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.find(params[:id])
 
     if @expense.update(expense_params)
-      render json: @expense.to_json(:include => [:category])
+      render json: @expense
     else
       render json: @expense.errors, status: :unprocessable_entity
     end
@@ -36,6 +37,6 @@ class ExpensesController < ApplicationController
 
   private
     def expense_params
-      params.require(:expense).permit(:date, :name, :category_id, :amount)
+      params.require(:expense).permit(:date, :name, :amount)
     end
 end
