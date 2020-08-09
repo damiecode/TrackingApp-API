@@ -1,20 +1,16 @@
 # TrackingApp
 The Back-end API for the Tracking App. Holds database info for All Users and allows RESTful HTTP requests to obtain and manipulate the User data.
-The data held in this back-end API is related to User authentication, a food table and a note table.
+The data held in this back-end API is related to User authentication, an expense table .
 
-<!-- ## Models
+## Models
 ### - User
 - Uses **has_secure_password**
-- **Has_many** association with Food Table
+- **Has_many** association with Expense Table
 - Has three (3) unique fields: **:username, :email, :password_digest**
 
-### - Food
+### - Expense
 - **Has_many** association with Notes Table
-- Has seven (7) unique fields: **:user_id, :name, :date_consumed, :servings_consumed, :carbs, :fats, :proteins**
-
-### - Note
-- Has a **one to one** association with Food table
-- Has two (2) unique fields: **:food_id, :body**
+- Has seven (7) unique fields: **:user_id, :name, :date_added, :amount**
 
 ## Controllers
 ### Registration Controller
@@ -25,13 +21,10 @@ Parameters accepted: { user: { :username, :email, :password, :password_confirmat
 Handles User Login and Logout requests  
 Parameters accepted: { user: { :username or :email, :password} }
 
-### Food Controller
-Handles food creation, deletion and editing  
-Parameters accepted: { food: { :name, :date_consumed, :servings_consumed, :carbs, :fats, :proteins } }
+### Expense Controller
+Handles expense creation, deletion and editing  
+Parameters accepted: { expense: { :name, :date_added, :amount } }
 
-### Note Controller
-Handles note creation, deletion and editing  
-Parameters accepted: { note: { :body } }
 
 ## Routes
 <pre>
@@ -40,18 +33,14 @@ sessions POST   /sessions(.:format)                                             
 registrations POST   /registrations(.:format)                                                   registrations#create
 logout DELETE /logout(.:format)                                                                 sessions#logout
 logged_in GET    /logged_in(.:format)                                                           sessions#logged_in
-food_notes POST   /foods/:food_id/notes(.:format)                                               notes#create
-food_note PATCH  /foods/:food_id/notes/:id(.:format)                                            notes#update
-PUT    /foods/:food_id/notes/:id(.:format)                                                      notes#update
-DELETE /foods/:food_id/notes/:id(.:format)                                                      notes#destroy
-foods GET    /foods(.:format)                                                                   foods#index
-POST   /foods(.:format)                                                                         foods#create
-food GET    /foods/:id(.:format)                                                                foods#show
-PATCH  /foods/:id(.:format)                                                                     foods#update
-PUT    /foods/:id(.:format)                                                                     foods#update
-DELETE /foods/:id(.:format)                                                                     foods#destroy
+expenses GET    /expenses(.:format)                                                                   expenses#index
+POST   /expenses(.:format)                                                                         expenses#create
+expense GET    /expenses/:id(.:format)                                                                expenses#show
+PATCH  /expenses/:id(.:format)                                                                     expenses#update
+PUT    /expenses/:id(.:format)                                                                     expenses#update
+DELETE /expenses/:id(.:format)                                                                     expenses#destroy
 root GET    /                                                                                   static#index
-</pre> -->
+</pre>
 
 ## Built With
 
@@ -72,13 +61,13 @@ root GET    /                                                                   
 
 * Download repository to your local machine, then run `bundle install` and run `rails db:setup`, `rails db:migrate` all within the terminal console.
 
-<!-- ### Navigate to config/initializers directory
+### Navigate to config/initializers directory
 
 1. Enter the cors.rb file and...
-2. On line 10 you will replace ```origins 'https://arn-tracking-app.herokuapp.com'``` with your own custom app's url. *(As you can see I used heroku to host my app)*
+2. On line 10 you will replace ```origins 'https://trackingapp-api.herokuapp.com'``` with your own custom app's url. *(As you can see I used heroku to host my app)*
 3. Close the cors.rb file and...
 4. Open the session_store.rb file within the same config/initializers directory and...
-5. Similar to what you did in the cors.rb file, on line 5 you will replace ```domain: 'arn-tracking-app-api.herokuapp.com'``` with your own custom app's domain. -->
+5. Similar to what you did in the cors.rb file, on line 5 you will replace ```domain: 'trackingapp-api.herokuapp.com'``` with your own custom app's domain.
 
 ## Author
 
