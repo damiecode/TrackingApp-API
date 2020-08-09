@@ -10,7 +10,7 @@ The data held in this back-end API is related to User authentication, an expense
 
 ### - Expense
 - **Has_many** association with Notes Table
-- Has seven (7) unique fields: **:user_id, :name, :date_added, :amount**
+- Has seven (4) unique fields: **:user_id, :name, :date_added, :amount**
 
 ## Controllers
 ### Registration Controller
