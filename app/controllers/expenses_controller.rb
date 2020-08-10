@@ -5,8 +5,8 @@ class ExpensesController < ApplicationController
 
   def index
     @expenses = Expense.all.order(date: :desc)
-    json_response(@expenses);
-    @currentTab = "expenses"
+    json_response(@expenses)
+    @current_tab = 'expenses'
   end
 
   def create
@@ -36,7 +36,8 @@ class ExpensesController < ApplicationController
   end
 
   private
-    def expense_params
-      params.require(:expense).permit(:date, :name, :amount)
-    end
+
+  def expense_params
+    params.require(:expense).permit(:date, :name, :amount)
+  end
 end

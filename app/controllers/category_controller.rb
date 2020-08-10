@@ -1,5 +1,5 @@
 class CategoryController < ApplicationController
-  def get_categories
+  def show_categories
     render json: Category.select(:id, :name, :description)
   end
 end
