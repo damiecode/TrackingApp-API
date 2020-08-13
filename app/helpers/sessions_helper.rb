@@ -1,8 +1,9 @@
 module SessionsHelper
   def set_current_user
-    return unless session[:user_id]
+    return @current_user if @current_user
 
-    @current_user = User.find_by(id: session[:user_id])
+    @current_user = User.find_by(id: session[:user_id]) if session[:user_id]
+
     return unless @current_user.nil?
 
     reset_session
