@@ -2,6 +2,7 @@ class ExpensesController < ApplicationController
   include SessionsHelper
 
   before_action :set_current_user
+  before_action :set_expense, only: %i[update, destroy]
 
   def index
     @expenses = Expense.all.order(date: :desc)
@@ -20,14 +21,11 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
-    @expense = Expense.find(params[:id])
     @expense.destroy
     head :no_content
   end
 
   def update
-    @expense = Expense.find(params[:id])
-
     if @expense.update(expense_params)
       render json: @expense
     else
@@ -39,5 +37,9 @@ class ExpensesController < ApplicationController
 
   def expense_params
     params.require(:expense).permit(:date, :name, :amount)
+  end
+
+  def expense
+    @expense = Expense.find(params[:id])
   end
 end
