@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   delete :logout, to: 'sessions#logout'
   get :logged_in, to: 'sessions#logged_in'
 
-  get 'category/get_categories'
+  get 'category/show_categories'
   resources :expenses, only: [:create, :index, :update]
  
   root 'static#index'

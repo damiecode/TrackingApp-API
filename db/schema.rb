@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_163439) do
+ActiveRecord::Schema.define(version: 2020_08_13_061135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_08_05_163439) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id", null: false
+    t.date "date_added"
     t.index ["category_id"], name: "index_expenses_on_category_id"
     t.index ["user_id"], name: "index_expenses_on_user_id"
   end
@@ -49,12 +50,9 @@ ActiveRecord::Schema.define(version: 2020_08_05_163439) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "amount"
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_users_on_user_id"
   end
 
   add_foreign_key "expenses", "categories"
   add_foreign_key "expenses", "users"
   add_foreign_key "savings", "users"
-  add_foreign_key "users", "users"
 end

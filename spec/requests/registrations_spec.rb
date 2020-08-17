@@ -21,4 +21,9 @@ RSpec.describe 'Registrations', type: :request do
       expect(parsed_json['status']).to eq('created')
     end
   end
+  describe User, 'validations' do
+    it { should validate_uniqueness_of(:email) }
+    it { should validate_presence_of(:email) }
+    it { should validate_format_of(:email).with_message(VALID_EMAIL_REGEX) }
+  end
 end
