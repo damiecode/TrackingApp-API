@@ -2,7 +2,7 @@ class ExpensesController < ApplicationController
   include SessionsHelper
 
   before_action :set_current_user
-  before_action :set_expense, only: %i[update, destroy]
+  before_action :set_expense, only: %i[update destroy]
 
   def index
     @expenses = Expense.all.order(date: :desc)
