@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get :logged_in, to: 'sessions#logged_in'
 
   get 'category/show_categories'
-  resources :expenses, only: [:create, :index, :update]
+  resources :expenses, only: %i[index show create update destroy]
  
   root 'static#index'
 end

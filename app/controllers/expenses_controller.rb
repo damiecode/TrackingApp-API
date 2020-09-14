@@ -2,7 +2,7 @@ class ExpensesController < ApplicationController
   include SessionsHelper
 
   before_action :set_current_user
-  before_action :set_expense, only: %i[update destroy]
+  before_action :set_expense, only: %i[show update destroy]
 
   def index
     @expenses = Expense.all.order(date: :desc)
@@ -11,12 +11,30 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    @expense = Expense.new(expense_params)
+    expense = @current_user.expenses.new(expense_params)
 
-    if @expense.save
-      render json: @expense
+    if expense.save
+      render json: {
+        status: :created,
+        expense: Expense.where(user: @current_user),
+        selected_expense: expense
+      }
     else
-      render json: @expense.errors, status: :unprocessable_entity
+      render json: { status: 'ERROR', message: 'Expense could not be created!',
+                     error: expense.errors.full_messages }, status: 500
+    end
+  end
+
+  def show
+    if expense
+      render json: {
+        status: :ok,
+        expense: @expense_list,
+        selected_expense: @selected_expense
+      }
+    else
+      render json: { status: 'ERROR', message: 'Expense could not be found!',
+                     error: @expense.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -35,11 +53,13 @@ class ExpensesController < ApplicationController
 
   private
 
-  def expense_params
-    params.require(:expense).permit(:date, :name, :amount)
+  def set_expense
+    @expense = Expense.find(params[:id])
+    @expense_list = Expense.where(user: @current_user)
+    @selected_expense = Expense.find(params[:id])
   end
 
-  def expense
-    @expense = Expense.find(params[:id])
+  def expense_params
+    params.require(:expense).permit(:date, :name, :amount)
   end
 end
