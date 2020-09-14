@@ -1,0 +1,25 @@
+example_id                                      | status  | run_time        |
+----------------------------------------------- | ------- | --------------- |
+./spec/models/category_spec.rb[1:1]             | pending | 0.00001 seconds |
+./spec/models/expense_spec.rb[1:1:1]            | passed  | 0.00482 seconds |
+./spec/models/expense_spec.rb[1:2:1]            | passed  | 0.00676 seconds |
+./spec/models/expense_spec.rb[1:2:2]            | passed  | 0.00482 seconds |
+./spec/models/expense_spec.rb[1:2:3]            | passed  | 0.00465 seconds |
+./spec/models/expense_spec.rb[1:2:4]            | passed  | 0.00438 seconds |
+./spec/models/expense_spec.rb[1:3:1]            | failed  | 0.00672 seconds |
+./spec/models/saving_spec.rb[1:1]               | pending | 0 seconds       |
+./spec/models/user_spec.rb[1:1:1]               | passed  | 0.00502 seconds |
+./spec/models/user_spec.rb[1:2:1]               | passed  | 0.00893 seconds |
+./spec/models/user_spec.rb[1:2:2]               | passed  | 0.00778 seconds |
+./spec/models/user_spec.rb[1:3:1]               | passed  | 0.00812 seconds |
+./spec/requests/category_request_spec.rb[1:1:1] | passed  | 0.0128 seconds  |
+./spec/requests/expenses_request_spec.rb[1:1:1] | failed  | 0.04013 seconds |
+./spec/requests/expenses_request_spec.rb[1:2:1] | failed  | 0.05359 seconds |
+./spec/requests/expenses_request_spec.rb[1:3:1] | failed  | 0.05157 seconds |
+./spec/requests/expenses_request_spec.rb[1:4:1] | failed  | 0.03436 seconds |
+./spec/requests/registrations_spec.rb[1:1:1]    | failed  | 0.11898 seconds |
+./spec/requests/registrations_spec.rb[1:1:2]    | passed  | 0.015 seconds   |
+./spec/requests/registrations_spec.rb[1:2:1]    | failed  | 0.0024 seconds  |
+./spec/requests/registrations_spec.rb[1:2:2]    | failed  | 0.00226 seconds |
+./spec/requests/registrations_spec.rb[1:2:3]    | failed  | 0.00245 seconds |
+./spec/requests/savings_request_spec.rb[1:1:1]  | failed  | 0.04585 seconds |
